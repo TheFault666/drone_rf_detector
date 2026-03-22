@@ -1,0 +1,9 @@
+SAMPLE_RATE = 2.4e6
+FFT_SIZE = 1024
+POWER_THRESHOLD = 10
+HOP_THRESHOLD = 40
+
+SDR_DEVICES = {
+    ("0x0bda", "0x2838"): "RTL-SDR",
+    ("0x1d50", "0x6089"): "HackRF One",
+}

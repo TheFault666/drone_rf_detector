@@ -1,0 +1,8 @@
+numpy
+scipy
+scikit-learn
+joblib
+pyusb
+pyzmq
+matplotlib
+pyrtlsdr
