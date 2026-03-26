@@ -1,24 +1,32 @@
 import usb.core
-from config.settings import SDR_DEVICES
+import usb.backend.libusb1
 
 def list_devices():
-    devices = usb.core.find(find_all=True)
+    backend = usb.backend.libusb1.get_backend()
+
+    if backend is None:
+        print("[WARNING] No USB backend found (libusb missing)")
+        return []
+
+    devices = usb.core.find(find_all=True, backend=backend)
+
     found = []
-
     for dev in devices:
-        vid = hex(dev.idVendor)
-        pid = hex(dev.idProduct)
-
-        found.append((vid, pid))
+        try:
+            vid = hex(dev.idVendor)
+            pid = hex(dev.idProduct)
+            found.append((vid, pid))
+        except:
+            continue
 
     return found
+
 
 def detect_sdr():
     devices = list_devices()
 
-    detected = []
-    for d in devices:
-        if d in SDR_DEVICES:
-            detected.append(SDR_DEVICES[d])
+    if not devices:
+        print("[INFO] No USB devices or backend not available")
+        return []
 
-    return detected
+    return devices

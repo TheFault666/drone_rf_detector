@@ -6,3 +6,7 @@ pyusb
 pyzmq
 matplotlib
 pyrtlsdr
+pyshark
+tk
+libusb
+asyncio
