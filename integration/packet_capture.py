@@ -1,7 +1,7 @@
 import pyshark
 import asyncio
 
-TSHARK_PATH = r"<Path>\tshark.exe"
+TSHARK_PATH = r"<Path>\tshark.exe" #<-- UPDATE YOUR PATH HERE
 
 def capture_packets(interface="Ethernet", packet_count=20):
     try:
